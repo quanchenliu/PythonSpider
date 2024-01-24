@@ -60,7 +60,20 @@
 
 
 
+## 三、parse模块
 
+具体的操作见《Python3 网络爬虫开发实战》第40页
+
+- urlparse：解析URL，按照URL标准将URL进行识别和分段；（注意：urlparse 有三个参数）
+- urlunparse：合成URL，要求参数必须是可迭代对象，且**长度必须为6**
+- urlsplit：与urlparse类似，但不单独解析params字段
+- urlunsplit：与urlunparse类似，要求参数必须是可迭代对象，且**长度必须为5**
+- urljion：对URL的拼合
+- urlencode：用于将字典转化为URL参数，广泛应用于构造GET请求参数时（序列化）
+- parse_qs：反序列化，将URL参数转回字典
+- parse_qsl：将URL转为由元组组成的列表
+- quote：将内容转化为URL编码格式，通常用于URL带有中文参数时
+- unquote：对URL进行解码
 
 
 
