@@ -77,7 +77,24 @@
 
 
 
+## 四、Robots协议与robotparser模块
 
+**1、Robots协议：**
+
+​		Robots协议又称网络爬虫排除协议（Robots Exclusion Protocol），用于告诉爬虫哪些网页可以抓取、哪些不可以。通常是一个叫作robots.txt文件，存放在网页的根目录下。
+
+​		在搜索爬虫访问一个页面时，**首先会检查这个站点根目录下是否存在robots.txt文件**。如果存在，则根据其中定义的爬取范围进行爬取；如果不存在，则访问索引可直接访问的页面。
+
+**2、robotparser模块：**
+
+​		该模块可根据 robots.txt 文件判断爬虫是否有权限爬取这个网页。
+
+- set_url：设置 robots.txt 的链接
+- read：读取 robots.txt 文件并进行分析，这个方法是在声明 RobotFileParser 类之后**必须调用**的。
+- can_fetch：有两个参数——`（Uer-Agent，URL）`，用于判断 User-Agent 是否可以抓取这个 URL。
+- parse：用于解析 robots.txt 文件。
+- mtime：返回上次抓取和分析 robot.txt 文件的时间。
+- modified：将当前时间设置为上次抓取和分析 robots.txt 文件的时间。
 
 
 

@@ -11,6 +11,6 @@
 - [ ] `parse`模块：一个URL处理的工具模块；
 - [ ] `robotparser`模块：用来识别网页的robots.txt文件，然后判断哪些网页可以爬取。
 
-详细内容见[urllib的使用](file:///C:/Users/DELL/Desktop/python爬虫基础/urllib/urllib的使用.html)
+详细内容见 `urllib/ urllib的使用`
 
 ## 二、requests的使用
