@@ -1,17 +1,3 @@
-# 基础爬虫实战案例
-
-
-
-## 一、任务概述：
-
-本案例以一个静态网站作为案例进行爬取，需要爬取的链接为：[Scrape | Movie](https://ssr1.scrape.center/)。需要爬取的内容：
-
-- [ ] 利用requests爬取这个站点每一页的电影列表，顺着列表爬取每个电影的详情页；
-- [ ] 用正则表达式提取每部电影的名称、封面、类别、上映时间、评分、剧情简介；
-- [ ] 将以上内容保存为 JSON 文件；
-- [ ] 使用多线程实现爬取的加速。
-
-```python
 """
  -*- coding : utf-8 -*-
  @Author  	: quanchenliu
@@ -29,7 +15,7 @@ from os import makedirs
 
 TOTAL_PAGE = 10
 BASE_URL = 'https://ssr1.scrape.center'
-RESULT_DIR = 'C:/Users/DELL/Desktop/python爬虫基础/基本库的使用/A_base_example'
+RESULT_DIR = '/The_Base_Category_use/A_base_example'
 # 将日志级别设置为 INFO，这意味着将记录 INFO 及更高级别的日志消息。
 # %(asctime)s: 记录日志的时间。 %(levelname)s: 日志消息的级别。 %(message)s: 日志消息的主体内容
 logging.basicConfig(level=logging.INFO, format='%(asctime)s-%(levelname)s:%(message)s')
@@ -115,6 +101,3 @@ if __name__ == "__main__":
     pool.map(main, pages)
     pool.close()
     pool.join()
-
-```
-
