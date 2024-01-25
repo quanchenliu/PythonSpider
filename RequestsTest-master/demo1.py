@@ -2,7 +2,7 @@
  -*- coding : utf-8 -*-
  @Author  	: quanchenliu
  @Time	   	: 2024/1/24
- @Function  : requests 库的 get 方法（与 urllib 库中的 urlopen 方法对应）
+ @Function  : requestsTest 库的 get 方法（与 urllibTest 库中的 urlopen 方法对应）
 """
 import requests
 

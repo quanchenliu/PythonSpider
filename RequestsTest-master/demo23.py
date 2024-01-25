@@ -6,7 +6,7 @@ proxies = {
 }
 requests.get('https://httpbin.org/get', proxies=proxies)
 
-# import requests
+# import requestsTest
 
 # proxies = {'https': 'http://user:password@10.10.10.10:1080/',}
-# requests.get('https://httpbin.org/get', proxies=proxies)
+# requestsTest.get('https://httpbin.org/get', proxies=proxies)

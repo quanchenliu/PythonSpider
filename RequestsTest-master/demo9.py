@@ -1,6 +1,6 @@
-# import requests
+# import requestsTest
 
-# r = requests.get('https://github.com/favicon.ico')
+# r = requestsTest.get('https://github.com/favicon.ico')
 # print(r.text)
 # print(r.content)
 

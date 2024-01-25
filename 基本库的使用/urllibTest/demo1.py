@@ -2,7 +2,7 @@
  -*- coding : utf-8 -*-
  @Author  	: quanchenliu
  @Time	   	: 2024/1/22
- @Function  : urllib.request 模块提供了最基本的构造HTTP请求的方法 urlopen
+ @Function  : urllibTest.request 模块提供了最基本的构造HTTP请求的方法 urlopen
 """
 
 import socket
@@ -21,7 +21,7 @@ print(type(response))                                       # type 方法得到�
 
 
 '''2、urlopen 的 data 参数'''
-string = urllib.parse.urlencode({'name': 'germey'})         # 使用 urllib.parse 模块里的 urlencode 方法将字典参数转化为字符串
+string = urllib.parse.urlencode({'name': 'germey'})         # 使用 urllibTest.parse 模块里的 urlencode 方法将字典参数转化为字符串
 data = bytes(string, encoding='utf-8')                      # bytes(字符串，编码格式): 将 str 对应的字符串按 utf-8 格式转换为 bytes 类型
 print(type(data))
 response = urllib.request.urlopen('https://httpbin.org/post', data=data)                # 传递 data 参数后，请求方式变为 POST
