@@ -57,8 +57,8 @@ def parse_detail(html):
     name_pattern = re.compile('<h2.*?>(.*?)</h2>')                                                          # 名称
     categories_pattern = re.compile('<button.*?category.*?<span>(.*/)</span>.*?</button>', re.S)            # 类别
     published_at_pattern = re.compile('(\d{4}-\d{2}-\d{2})\s?上映')                                          # 上映时间
-    score_pattern = re.compile('<p.*?score.*?>(.*?)</p>', re.S)                                  # 评分
-    drama_pattern = re.compile('<div.*?drama.*?>.*?<p.*?>(.*?)</p>', re.S)                                             # 剧情简介
+    score_pattern = re.compile('<p.*?score.*?>(.*?)</p>', re.S)                                             # 评分
+    drama_pattern = re.compile('<div.*?drama.*?>.*?<p.*?>(.*?)</p>', re.S)                                  # 剧情简介
 
     cover = re.search(cover_pattern, html).group(1).strip() if re.search(cover_pattern, html) else None
     name = re.search(name_pattern, html).group(1).strip() if re.search(name_pattern, html) else None
@@ -94,10 +94,9 @@ def main(page):
         logging.info('data saved successfully')
 
 
-
 if __name__ == "__main__":
-    pool = multiprocessing.Pool()
-    pages = range(1, TOTAL_PAGE+1)
-    pool.map(main, pages)
-    pool.close()
-    pool.join()
+    pool = multiprocessing.Pool()       # 创建一个进程池
+    pages = range(1, TOTAL_PAGE+1)      # 生成一个从 1 到 TOTAL_PAGE 的整数序列的可迭代对象，用于表示需要处理的页面
+    pool.map(main, pages)               # 使用进程池并行地执行 main 函数
+    pool.close()                        # 关闭进程池
+    pool.join()                         # 等待所有进程完成
