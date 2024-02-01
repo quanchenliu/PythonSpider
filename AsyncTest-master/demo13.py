@@ -1,3 +1,9 @@
+"""
+ -*- coding : utf-8 -*-
+ @Author  	: quanchenliu
+ @Time	   	: 2024/2/1
+ @Function  :
+"""
 import requests
 import time
 import multiprocessing
