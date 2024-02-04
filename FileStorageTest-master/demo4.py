@@ -2,26 +2,17 @@
  -*- coding : utf-8 -*-
  @Author  	: quanchenliu
  @Time	   	: 2024/2/4
- @Function  : 输出 json（open、write、dumps）
+ @Function  : CSV 文件写入列表（writer方法、writerow方法、writerows方法、delimiter参数）
 """
-import json
+import csv
 
-data = [{
-    'name': 'Bob',
-    'gender': 'male',
-    'birthday': '1992-10-18'
-    },
-    {
-    'name': ' 王伟 ',
-    'gender': ' 男 ',
-    'birthday': '1992-10-18'
-}]
+with open('C:/Users/DELL/Desktop/python爬虫基础/5.FileStorageTest/data.csv', 'w') as csvfile:
+    writer = csv.writer(csvfile, delimiter=' ')  # 若要指定列与列之间的分隔符，可以传入 delimiter 参数
+    writer.writerow(['id', 'name', 'age'])
+    writer.writerow(['10001', 'Mike', 20])
+    writer.writerow(['10002', 'Bob', 22])
+    writer.writerow(['10003', 'Jordan', 21])
 
-# 调用 dumps 方法将 json 对象转化为字符串
-# indent=2 用于保证 json 数据的缩进格式
-# ensure_ascii=False 用于保证中文字符的正常输出
-with open('C:/Users/DELL/Desktop/python爬虫基础/5.FileStorageTest/data.json', 'w', encoding='utf-8') as file:
-    file.write(json.dumps(data, indent=2, ensure_ascii=False))
-
-# 同样的，dumps 方法有与之对应的 dump 方法
-json.dump(data, open('data.json', 'a', encoding='utf-8'), indent=2, ensure_ascii=False)
+    # writer = csv.writer(csvfile)                    # CSV 文件默认以逗号为分隔符
+    # writer.writerow(['id', 'name', 'age'])          # 调用 writerows 方法同时写入多行，传入参数为二维列表
+    # writer.writerows([['10001', 'Mike', 20], ['10002', 'Bob', 22], ['10003', 'Jordan', 21]])

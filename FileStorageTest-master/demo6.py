@@ -1,8 +1,16 @@
-import csv
+"""
+ -*- coding : utf-8 -*-
+ @Author  	: quanchenliu
+ @Time	   	: 2024/2/4
+ @Function  : 利用 pandas 库对 CSV 文件进行读取或写入
+"""
+import pandas as pd
 
-with open('data.csv', 'w') as csvfile:
-    writer = csv.writer(csvfile)
-    writer.writerow(['id', 'name', 'age'])
-    writer.writerow(['10001', 'Mike', 20])
-    writer.writerow(['10002', 'Bob', 22])
-    writer.writerow(['10003', 'Jordan', 21])
+data = [
+    {'id': '10001', 'name': 'Mike', 'age': 20},
+    {'id': '10002', 'name': 'Bob', 'age': 22},
+    {'id': '10003', 'name': 'Jordan', 'age': 21},
+]
+
+df = pd.DataFrame(data)         # 新建一个 DataFrame 对象
+df.to_csv('C:/Users/DELL/Desktop/python爬虫基础/5.FileStorageTest/data.csv', index=False)
