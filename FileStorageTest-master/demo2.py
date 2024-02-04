@@ -1,3 +1,9 @@
+"""
+ -*- coding : utf-8 -*-
+ @Author  	: quanchenliu
+ @Time	   	: 2024/2/4
+ @Function  : 将字符串转为 json 对象（loads、get方法）
+"""
 import json
 
 str = '''
@@ -15,3 +21,6 @@ print(type(str))
 data = json.loads(str)
 print(data)
 print(type(data))
+print(type(data[0]))
+
+print(data[0].get('age'))
