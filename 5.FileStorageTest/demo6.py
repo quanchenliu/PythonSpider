@@ -12,5 +12,14 @@ data = [
     {'id': '10003', 'name': 'Jordan', 'age': 21},
 ]
 
-df = pd.DataFrame(data)         # 新建一个 DataFrame 对象
+
+# 将 data 写入 CSV 文件
+df = pd.DataFrame(data)                 # 新建一个 DataFrame 对象
 df.to_csv('C:/Users/DELL/Desktop/python爬虫基础/5.FileStorageTest/data.csv', index=False)
+
+# 从 CSV 文件中读取 data
+df = pd.read_csv('C:/Users/DELL/Desktop/python爬虫基础/5.FileStorageTest/data.csv')
+data = df.values.tolist()               # 调用 .values.tolist 方法，将数据转化为列表
+print(data)
+for index, row in df.iterrows():        # 对 df 进行逐行遍历，同样能够得到列表类型的结果
+    print(row.tolist())
