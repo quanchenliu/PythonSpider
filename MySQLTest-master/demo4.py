@@ -1,8 +1,8 @@
 """
  -*- coding : utf-8 -*-
  @Author  	: quanchenliu
- @Time	   	: 2024/2/4
- @Function  : 爬取网页数据，并以 .txt 格式存储（open、write、close）
+ @Time	   	: 2024/2/
+ @Function  : 使用动态 SQL 语句完成数据插入
 """
 import pymysql
 
@@ -14,11 +14,10 @@ data = {
 table = 'students'
 keys = ', '.join(data.keys())
 values = ', '.join(['%s'] * len(data))
-db = pymysql.connect(host='localhost', user='root',
-                     password=None, port=3306, db='spiders')
+db = pymysql.connect(host='localhost', user='root', password='190901sjnh', port=3306, db='spiders')
 cursor = db.cursor()
-sql = 'INSERT INTO {table}({keys}) VALUES ({values})'.format(
-    table=table, keys=keys, values=values)
+sql = 'INSERT INTO {table}({keys}) VALUES ({values})'.format(table=table, keys=keys, values=values)
+
 try:
     if cursor.execute(sql, tuple(data.values())):
         print('Successful')
