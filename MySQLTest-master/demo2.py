@@ -11,6 +11,5 @@ cursor = db.cursor()
 
 # 创建表 students : 包含三个字段，id、name、age
 sql = 'CREATE TABLE IF NOT EXISTS students (id VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL, age INT NOT NULL, PRIMARY KEY (id))'
-cursor.execute(sql)
-
+cursor.execute(sql)                 # 执行 SQL 语句
 db.close()

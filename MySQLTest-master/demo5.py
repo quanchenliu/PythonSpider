@@ -15,8 +15,7 @@ data = {
 table = 'students'
 keys = ', '.join(data.keys())
 values = ', '.join(['%s'] * len(data))
-db = pymysql.connect(host='localhost', user='root',
-                     password=None, port=3306, db='spiders')
+db = pymysql.connect(host='localhost', user='root', password='190901sjnh', port=3306, db='spiders')
 cursor = db.cursor()
 sql = 'INSERT INTO {table}({keys}) VALUES ({values}) ON DUPLICATE KEY UPDATE '.format(
     table=table, keys=keys, values=values)
