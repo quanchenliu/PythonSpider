@@ -12,8 +12,10 @@ age = 20
 
 db = pymysql.connect(host='localhost', user='root', password='190901sjnh', port=3306, db='spiders')
 cursor = db.cursor()
+
 # 这种写法可以有效避免字符串拼接的麻烦和引号冲突的问题
 sql = 'INSERT INTO students(id, name, age) values(%s, %s, %s)'
+
 try:
     cursor.execute(sql, (id, user, age))    # 通过元组的方式进行数据传递
     db.commit()                             # 在执行写操作（如 INSERT、UPDATE、DELETE）后，都需要调用 commit() 方法将事务提交，才能使修改生效

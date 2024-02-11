@@ -1,2 +1,0 @@
-# MySQLTest
-MySQL Test Demo

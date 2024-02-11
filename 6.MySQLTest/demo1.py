@@ -12,6 +12,6 @@ cursor.execute('SELECT VERSION()')              # 执行 SQL 查询语句
 data = cursor.fetchone()                        # 从查询结果中获取版本信息
 print('Database version:', data)
 
-# 创建一个名为 "spiders" 的数据库，并使用 utf-8 编码
-cursor.execute("CREATE DATABASE spiders DEFAULT CHARACTER SET utf8mb4")
+# 创建一个名为 "students" 的数据库，并使用 utf-8 编码
+cursor.execute("CREATE DATABASE students DEFAULT CHARACTER SET utf8mb4")
 db.close()                                      # 关闭数据库链接

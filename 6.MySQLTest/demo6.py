@@ -1,13 +1,13 @@
 """
  -*- coding : utf-8 -*-
  @Author  	: quanchenliu
- @Time	   	: 2024/2/4
- @Function  : 爬取网页数据，并以 .txt 格式存储（open、write、close）
+ @Time	   	: 2024/2/11
+ @Function  : 删除数据
 """
 import pymysql
 
 table = 'students'
-condition = 'age > 20'
+condition = 'age > 20'          # 删除条件
 
 db = pymysql.connect(host='localhost', user='root', password='190901sjnh', port=3306, db='spiders')
 cursor = db.cursor()
