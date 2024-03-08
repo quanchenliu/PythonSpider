@@ -5,22 +5,9 @@
  @Function  : BeautifulSoup 的基本用法（提取信息）
 """
 
-html = """
-<html><head><title>The Dormouse's story</title></head>
-<body>
-<p class="title" name="dromouse"><b>The Dormouse's story</b></p>
-<p class="story">Once upon a time there were three little sisters; and their names were
-<a href="http://example.com/elsie" class="sister" id="link1"><!-- Elsie --></a>,
-<a href="http://example.com/lacie" class="sister" id="link2">Lacie</a> and
-<a href="http://example.com/tillie" class="sister" id="link3">Tillie</a>;
-and they lived at the bottom of a well.</p>
-<p class="story">...</p>
-"""
-
 from bs4 import BeautifulSoup
-# 第一个参数是一个 HTML 字符串（但并不完整）
-# 第二个参数是解析器类型: lxml
-soup = BeautifulSoup(html, 'lxml')          # 定义并初始化一个 BeautifulSoup 对象
+# 第一个参数是一个 HTML 字符串, 第二个参数是解析器类型: lxml
+soup = BeautifulSoup(open('practice_BeautifulSoup.html'), 'lxml')          # 定义并初始化一个 BeautifulSoup 对象
 
 # 1、prettify() 方法: 可以将不标准的字符串以标准格式输出（自动更正格式的过程是在初始化BeautifulSoup的时候完成的）
 print(soup.prettify())
