@@ -1,8 +1,8 @@
 """
  -*- coding : utf-8 -*-
  @Author  	: quanchenliu
- @Time	   	: 2024/3/9
- @Function  : 百度爬虫广告过滤系统（XPath版）
+ @Time	   	: 2024/3/10
+ @Function  : b 站评论爬虫(TXT版)
 """
 import requests
 import time
@@ -10,9 +10,7 @@ from bs4 import BeautifulSoup
 import json
 
 
-# 首先我们写好抓取网页的函数
-
-#以字符串的格式返回所需网页的全部内容
+"""获取网页的 HTML 文件"""
 def get_html(url):
     headers = {
         'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
@@ -21,47 +19,36 @@ def get_html(url):
 
     r = requests.get(url, timeout=30, headers=headers)
     r.raise_for_status()
-    r.endcodding = 'utf-8'
-    # print(r.text)
+    r.encoding = 'utf-8'
     return r.text
 
-
+"""分析网页文件，整理信息，保存在列表变量中"""
 def get_content(url):
-    '''
-    分析网页文件，整理信息，保存在列表变量中
-    '''
     comments = []
-    # 首先，我们把需要爬取信息的网页下载到本地
-    html = get_html(url)
+    html = get_html(url)                                        # 获取所爬取网页的 HTML 文件
     try:
-        s = json.loads(html)
+        s = json.loads(html)                                    # 将 str 类型的 html 转为 字典类型的 s
     except:
-        print("jsonload error")
+        print("json load error")
 
-    num = len(s['data']['replies'])  # 获取每页评论栏的数量
+    num = len(s['data']['replies'])                             # 获取每页评论栏的数量
     # print(num)
     i = 0
     while i < num:
-        comment = s['data']['replies'][i]  # 获取每栏评论
-
-        InfoDict = {}  # 存储每组信息字典
-
-        InfoDict['Uname'] = comment['member']['uname']  # 用户名
-        InfoDict['Like'] = comment['like']  # 点赞数
-        InfoDict['Content'] = comment['content']['message']  # 评论内容
-        InfoDict['Time'] = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(comment['ctime']))  # ctime格式的特殊处理？不太清楚具体原理
-
+        comment = s['data']['replies'][i]                       # 获取每栏评论
+        InfoDict = {                                            # 存储每组信息字典
+            'Uname': comment['member']['uname'],                # 用户名
+            'Like': comment['like'],                            # 点赞数
+            'Content': comment['content']['message'],           # 评论内容
+            'Time': time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(comment['ctime']))
+        }
         comments.append(InfoDict)
         i = i + 1
-    # print(comments)
     return comments
 
 
-def Out2File(dict):
-    '''
-    将爬取到的文件写入到本地
-    保存到当前目录的 BiliBiliComments.txt文件中。
-    '''
+"""将爬取到的文件写入到本地, 保存到当前目录的 BiliBiliComments.txt文件中。"""
+def FileStorage(dict):
     with open('BiliBiliComments.txt', 'a+', encoding='utf-8') as f:
         i = 0
         for comment in dict:
@@ -80,12 +67,14 @@ if __name__ == '__main__':
     page = 1
     while e == 0:
         url = "https://api.bilibili.com/x/v2/reply?pn=" + str(page) + "&type=1&oid=455803935&sort=2"
+        print(url)
         try:
             content = get_content(url)
             print("page:", page)
-            Out2File(content)
+            FileStorage(content)
             page = page + 1
-            # 为了降低被封ip的风险，每爬20页便歇5秒。
+
+            # 为了降低被封 ip 的风险，每爬 10 页便歇 5 秒。
             if page % 10 == 0:
                 time.sleep(5)
         except:
