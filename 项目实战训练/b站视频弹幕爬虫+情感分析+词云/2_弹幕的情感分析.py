@@ -27,10 +27,10 @@ def sentiment_analyse(barrage_list, df):
 		tag = ''
 		# 创建一个 SnowNLP 类的实例，并用文本 barrage 计算情感分数，然后通过.sentiments 属性返回文本的情感分数
 		sentiments_score = SnowNLP(barrage).sentiments
-		if sentiments_score < 0.5:
+		if sentiments_score < 0.3:
 			tag = '消极'
 			neg_count += 1
-		elif sentiments_score > 0.5:
+		elif sentiments_score >= 0.7:
 			tag = '积极'
 			opt_count += 1
 		else:
@@ -54,16 +54,15 @@ def sentiment_analyse(barrage_list, df):
 def make_wordcloud(v_str, v_stopwords, v_outfile):
 	print('开始生成词云图: {}'.format(v_outfile))
 	ciyun_background = 'C:/Users/DELL/Desktop/python爬虫基础/项目实战训练/b站视频弹幕爬虫+情感分析+词云/picture/新疆棉弹幕_词云图.png'
-
+	stopwords = v_stopwords  # 停用词
 	try:
-		stopwords = v_stopwords  									# 停用词
 		background_Image = np.array(Image.open(ciyun_background))  	# 读取背景图片
 		wc = WordCloud(
 			background_color="white",  								# 背景颜色
 			width=1500,  											# 图宽
 			height=1200,  											# 图高
 			max_words=1000,  										# 最多字数
-			font_path="C:\Windows\Fonts\simhei.ttf",  				# 字体文件路径，根据实际情况(Windows)替换
+			# font_path="C:\Windows\Fonts\simhei.ttf",  				# 字体文件路径，根据实际情况(Windows)替换
 			stopwords=stopwords,  									# 停用词
 			mask=background_Image,  								# 背景图片
 		)
