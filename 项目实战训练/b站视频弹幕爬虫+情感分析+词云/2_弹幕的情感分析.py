@@ -63,7 +63,7 @@ def make_wordcloud(v_str, v_stopwords, v_outfile):
 			width=1500,  											# 图宽
 			height=1200,  											# 图高
 			max_words=1000,  										# 最多字数
-			# font_path="C:\Windows\Fonts\simhei.ttf",  				# 字体文件路径，根据实际情况(Windows)替换
+			font_path="C:\Windows\Fonts\simhei.ttf",  				# 字体文件路径，根据实际情况(Windows)替换
 			stopwords=stopwords,  									# 停用词
 			mask=background_Image,  								# 背景图片
 		)
